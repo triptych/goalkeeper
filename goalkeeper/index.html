@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoalKeeper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a90e2">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-bullseye"></i>
+            <span>GoalKeeper</span>
+        </div>
+        <nav>
+            <button id="login-button">Login to Puter</button>
+            <button id="open-add-goal-dialog">
+                <i class="fas fa-plus"></i> New Goal
+            </button>
+            <button id="open-categories-dialog">
+                <i class="fas fa-tags"></i> Manage Categories
+            </button>
+            <button id="open-search">
+                <i class="fas fa-search"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>Total Goals</h3>
+                    <p id="total-goals">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed</h3>
+                    <p id="completed-goals">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>In Progress</h3>
+                    <p id="in-progress-goals">0</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="goals-list">
+            <h2>Your Goals</h2>
+            <div id="goals-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="import-export-container">
+                <button id="export-goals">
+                    <i class="fas fa-file-export"></i> Export Goals
+                </button>
+                <div class="file-input-wrapper">
+                    <button class="file-input-button">
+                        <i class="fas fa-file-import"></i> Import Goals
+                    </button>
+                    <input type="file" id="import-goals" accept=".json">
+                </div>
+            </div>
+            <a href="https://andreww.xyz" target="_blank" class="creator-link">Created by Andrew Wooldridge</a>
+        </div>
+    </footer>
+
+    <dialog id="add-goal-dialog">
+        <h2>Add New Goal</h2>
+        <form id="new-goal-form">
+            <input type="text" id="goal-title" placeholder="Goal Title" required>
+            <textarea id="goal-notes" placeholder="Goal Notes"></textarea>
+            <select id="goal-category">
+                <option value="">Select Category</option>
+            </select>
+            <div class="dialog-buttons">
+                <button type="submit">Add Goal</button>
+                <button type="button" id="close-add-goal-dialog">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="goal-details-dialog">
+        <h2 id="dialog-title"></h2>
+        <div id="dialog-category"></div>
+        <div id="dialog-progress"></div>
+        <textarea id="dialog-notes"></textarea>
+        <p id="dialog-last-updated"></p>
+        <div class="dialog-buttons">
+            <button id="dialog-progress-1">+1%</button>
+            <button id="dialog-progress-10">+10%</button>
+            <button id="dialog-save">Save</button>
+            <button id="dialog-close">Close</button>
+            <button id="dialog-delete" class="delete-button">Delete Goal</button>
+            <button id="dialog-ai-suggestion">Get AI Suggestion</button>
+        </div>
+    </dialog>
+
+    <dialog id="ai-suggestion-dialog">
+        <h2>AI Suggestion</h2>
+        <p id="ai-suggestion-content"></p>
+        <button id="close-ai-suggestion">Close</button>
+    </dialog>
+
+    <dialog id="congratulations-dialog">
+        <h2>Congratulations!</h2>
+        <p>You've completed your goal!</p>
+        <button id="congrats-close">Close</button>
+    </dialog>
+
+    <dialog id="search-dialog">
+        <h2>Search Goals</h2>
+        <input type="text" id="search-input" placeholder="Search by title or category">
+        <div id="search-results"></div>
+        <button id="close-search">Close</button>
+    </dialog>
+
+    <dialog id="categories-dialog">
+        <h2>Manage Categories</h2>
+        <form id="add-category-form">
+            <input type="text" id="new-category-input" placeholder="New Category Name" required>
+            <button type="submit">Add Category</button>
+        </form>
+        <ul id="categories-list"></ul>
+        <button id="close-categories-dialog">Close</button>
+    </dialog>
+
+    <script src="https://js.puter.com/v2/"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
